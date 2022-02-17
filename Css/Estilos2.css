@@ -8,7 +8,6 @@
 .fondo-caja{
     display: flex;
     width: 80%;
-    height: 690px;
     margin-top: 5%;
     margin-left: 10%;
     margin-right: 10%;
@@ -57,6 +56,10 @@
     padding-left: 5%;
     border-left: 1px solid black;
 }
+.tranfe{
+    display: flex;
+    justify-content: center;
+}
 #cantidad{
     display: flex;
     margin-top: 10%;
@@ -90,4 +93,13 @@
     margin-top: 6%;
     border: 0px solid transparent;
     border-radius: 20px;
+}
+@media screen and (max-width:1200px){
+    .fondo-caja{
+        grid-template-columns: 1fr;
+    }
+    .transferencias{
+        border-left: none;
+        padding: 0px;
+    }
 }
