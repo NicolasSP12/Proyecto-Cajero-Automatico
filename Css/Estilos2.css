@@ -47,6 +47,9 @@
 .espacio1{
     margin-top: 5%;
 }
+.espacio2{
+    margin-right: 1%;
+}
 .transferencias{
     display: flex;
     flex-direction: column;
