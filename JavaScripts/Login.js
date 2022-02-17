@@ -4,25 +4,28 @@ var cuentas = [
   {nombre:"Maui", saldo: 67, password: 521}
 ]
 
-var usuario = ""
 
 function login(form){ 
-  usuario = document.getElementById("usuario").value
+  var usuario = document.getElementById("usuario").value
   var contraseña = document.getElementById("contraseña").value
-    for( var i = 0 ; i < cuentas.length ; i++ ){
-      if ( cuentas[i].nombre == usuario && cuentas[i].password == contraseña ){
-        location.href = "Main.html?usuario="+usuario
-      }else {
-        // alert("Usuario no encontrado")
-        // console.log("Usuario no encontrado")
-      }
-    } 
+  var miStorage = window.localStorage
+  miStorage.setItem("usuario", usuario)
+  for( var i = 0 ; i < cuentas.length ; i++ ){
+    if ( cuentas[i].nombre == usuario && cuentas[i].password == contraseña ){
+      location.href = "Main.html?usuario="+usuario
+    }else {
+      alert("Usuario no encontrado")
+      // console.log("Usuario no encontrado")
+    }
+  } 
 }
 
+
 window.onload = function(){
-  // const params = new URLSearchParams(window.location.search)
-  // console.log(params)
-  mostrar(usuario)
+  mostrar(localStorage.getItem("usuario"))
+}
+function limpiar(){
+  localStorage.clear()
 }
 
 function mostrar(usuario){
@@ -39,14 +42,14 @@ var limite_min = 10
 function formula1() {
   var CantidadTotal = parseInt(document.getElementById("cantidad").value)
   var CantidadInput = parseInt(document.getElementById("montos").value)
-  if(CantidadTotal < limite_max && CantidadInput < limite_max){
+  if(CantidadTotal <= limite_max && CantidadInput <= limite_max){
     if((CantidadTotal+CantidadInput) <= 990){
       document.getElementById("montos").value=(CantidadTotal+CantidadInput)
     }else{
-      alert("No puede ingresar un monto mayor a " + 990)
+      alert("El limite maximo de la cuenta es de: $" + limite_max)
     }
   }else{
-    alert("Ha alcanzado el limite maximo de la cuenta")
+    alert("El limite maximo de la cuenta es de: $" + limite_max)
   }
 }
 
@@ -54,12 +57,10 @@ function formula2() {
   var CantidadTotal = parseInt(document.getElementById("cantidad").value)
   var CantidadInput = parseInt(document.getElementById("montos").value)
   if(CantidadTotal >= limite_min){
-    if((CantidadInput-CantidadTotal) > 10){
+    if((CantidadInput-CantidadTotal) >= 10){
       document.getElementById("montos").value= (CantidadInput-CantidadTotal)
     }else{
-      alert("No puede retirar más montos, su cuenta ha llegado al limite minimo: " + 10)
+      alert("El limite minimo de las cuentas son de: $" + limite_min)
     }
-  }else{
-    alert("Ha alcanzado el limite minimo de la cuenta")
   }
 }

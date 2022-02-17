@@ -24,7 +24,7 @@
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="font-family: 'Kufam', sans-serif;">
                       <li><a class="dropdown-item" href="Index.html">Página Principal</a></li>
-                      <li><a class="dropdown-item" href="Login.html">Cerrar Sesión</a></li>
+                      <li><a class="dropdown-item" href="Login.html" onclick="limpiar();">Cerrar Sesión</a></li>
                     </ul>
                 </div>
             </div>
@@ -33,7 +33,7 @@
     <section class="fondo-caja">
         <div class="fondo-monto">
             <h1 class="espacio1">Saldo Actual de la cuenta</h1>
-            <input class="monto" type="text" value="0" id="montos" disabled onclick="Numeros();">
+            <input class="monto" type="text" value="0" id="montos" disabled onclick="mostrar();">
         </div>
         <div class="transferencias">
             <h1 class="tranfe">Transferencias:</h1>
